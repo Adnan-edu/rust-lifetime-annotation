@@ -1,3 +1,5 @@
+use std::result;
+
 fn next_language<'a>(languages: &'a [String], current: &str) -> &'a str {
     let mut found = false;
     for lang in languages {
@@ -14,7 +16,13 @@ fn next_language<'a>(languages: &'a [String], current: &str) -> &'a str {
 fn last_language(languages: &[String]) -> &str {
     languages.last().unwrap()
 }
-
+fn longest_language<'a>(lang_a: &'a str, lang_b: &'a str) -> &'a str {
+    if (lang_a.len() >= lang_b.len()) {
+        lang_a
+    } else {
+        lang_b
+    }
+}
 fn main() {
     let languages = vec![
         String::from("rust"),
@@ -23,6 +31,8 @@ fn main() {
     ];
     //let result = next_language(&languages, "go");
 
-    let result = last_language(&languages);
+    //let result = last_language(&languages);
+
+    let result = longest_language("go", "typescript");
     println!("{}", result);
 }
